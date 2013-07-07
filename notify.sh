@@ -34,13 +34,10 @@ fi
 done
 filename=${ary[length-1]}
 
-#Owncloud add (XX) to the filename when you version it and then Ownclooud removes it.
+#Owncloud add (XX) to the filename when you version it, so we remove it.
 nomfichier=$(echo $filename | sed -r 's/ \([0-9]+\)//g')
 
-#directory url
 encodeDirUrl=$(php -r "echo rawurlencode(\"$chemin\");")
-
-#file download url
 encodeFileUrl=$(php -r "echo rawurlencode(\"$nomfichier\");")
 
 #email message for files
@@ -52,7 +49,7 @@ messagerep="le répertoire partagé <b>$chemin</b><br><br>Nom du répertoire: <b
 STATUT=""
 FLAG=""
 
-#email message according to retrieval itonify event
+#email message according to retrieval inotify event
 if [[ "$file" == *CREATE* ]] && [[ "$file" == *ISDIR* ]]
 then
   STATUT="<br>Un répertoire a été créé dans $messagerep"
