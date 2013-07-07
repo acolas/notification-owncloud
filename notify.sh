@@ -37,13 +37,17 @@ filename=${ary[length-1]}
 #Owncloud add (XX) to the filename when you version it and then Ownclooud removes it.
 nomfichier=$(echo $filename | sed -r 's/ \([0-9]+\)//g')
 
+#directory url
+encodeDirUrl=$(php -r "echo rawurlencode(\"$chemin\");")
+
+#file download url
+encodeFileUrl=$(php -r "echo rawurlencode(\"$nomfichier\");")
+
 #email message for files
-message="le répertoire partagé <b>$chemin</b><br><br>Nom du fichier: <b>$nomfichier</b><br><br>URL d'accès au répertoire: https://files.myowncloud.fr/index.php/apps/files?dir=$chemin<br><br>URL de télécha
-rgement du fichier: https://files.myowncloud.fr/index.php/apps/files/download$chemin$nomfichier<br><br>Date et heure: <b>$date</b> à <b>$time</b><br><br>"
+message="le répertoire partagé <b>$chemin</b><br><br>Nom du fichier: <b>$nomfichier</b><br><br>URL d'accès au répertoire: https://files.my-owncloud.fr/index.php/apps/files?dir=$encodeDirUrl<br><br>URL de téléchargement du fichier: https://files.my-owncloud.fr/index.php/apps/files/download$encodeDirUrl$encodeFileUrl<br><br>Date et heure: <b>$date</b> à <b>$time</b><br><br>"
 
 #email message for directories
-messagerep="le répertoire partagé <b>$chemin</b><br><br>Nom du répertoire: <b>$nomfichier</b><br><br>URL du répertoire: https://files.myowncloud.fr/index.php/apps/files?dir=$chemin$nomfichier<br><br>Date 
-et heure: <b>$date</b> à <b>$time</b><br><br>"
+messagerep="le répertoire partagé <b>$chemin</b><br><br>Nom du répertoire: <b>$nomfichier</b><br><br>URL du répertoire: https://files.my-owncloud.fr/index.php/apps/files?dir=$encodeDirUrl$encodeFileUrl<br><br>Date et heure: <b>$date</b> à <b>$time</b><br><br>"
 
 STATUT=""
 FLAG=""
