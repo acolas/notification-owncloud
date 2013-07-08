@@ -57,10 +57,9 @@ then
 else
 	if [[ "$file" == *CREATE* ]]
 	then
-	  if [[ "$nomfichier" =~ .*\([0-9]+\).*  ]] 
+	  if [[ "$namefichier" =~ .*\([0-9]+\).*  ]] 
 	  then
-	        echo $nomfichier | sed -r 's/ \([0-9]+\)//g'	
-		STATUT="<br>Un fichier a été mis à jour dans $message"
+	    	STATUT="<br>Un fichier a été mis à jour dans $message"
 	  else
 	        STATUT="<br>Un nouveau fichier a été créé dans $message" 
 	  fi 
@@ -89,7 +88,7 @@ fi
 #we don't want to send email when we receive this event
 if [[ "$file" =~ "MOVED_FROM" ]]
 then
-    oldnomfichier=$nomfichier 
+    oldnomfichier=$namefichier 
 	elif [[ "$OLDFLAG" =~ "CREATE" ]] && [[ "$FLAG" =~ "CLOSE_WRITE" ]] || [[ "$oldnomfichier" =~ .*([0-9]+).* ]]
 	then
 	   sleep 1 
