@@ -93,7 +93,7 @@ then
 	then
 	   sleep 1 
 	else
-	sendEmail -q -f sender@gmail.com -t receiver@gmail.com -bcc bcc@gmail.com -u "Notification de changement sur le répertoire $chemin" -m "<html><body>Bonjour,<br>$STATUT<br>Cordialem
+	sendEmail -o message-charset=utf-8 -q -f sender@gmail.com -t receiver@gmail.com -bcc bcc@gmail.com -u "Notification de changement sur le répertoire $chemin" -m "<html><body>Bonjour,<br>$STATUT<br>Cordialem
 	ent.</html>" -s smtp.url.com -o tls=yes -xu accountsmtp@gmail.com -xp passwordsmtp
 fi
 OLDFLAG=$FLAG;
