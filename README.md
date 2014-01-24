@@ -1,4 +1,4 @@
-Owncloud 5 email notification
+Owncloud email notification
 ===========================
 
 Summary
